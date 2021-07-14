@@ -1,3 +1,11 @@
 object-fit: cover
 
 The replaced content is sized to maintain its aspect ratio while filling the element’s entire content box. If the object's aspect ratio does not match the aspect ratio of its box, then the object will be clipped to fit.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+HTMLElement.dataset
+
+In HTML
+The attribute name begins with data-. It can contain only letters, numbers, dashes (-), periods (.), colons (:), and underscores (_). Any ASCII capital letters (A to Z) are converted to lowercase.
+In JavaScript
+The property name of a custom data attribute is the same as the HTML attribute without the data- prefix, and removes single dashes (-) for when to capitalize the property's "camelCased" name.

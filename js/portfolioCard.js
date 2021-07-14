@@ -1,5 +1,5 @@
 /*
-<div class="portfolio-card" data-item="web">
+<div class="portfolio-card" data-item="web" data-open='modal-card' data-modalCard='web-1'>
   <div class="card-body">
     <img src="./assets/images/portfolio-1.jpg" alt="portfolio icon">
     <a href="#!" class="card-popup-box">
@@ -41,14 +41,16 @@ const aH3s = [
     "Money App",
     "Fantastic Design"
 ];
+const dataModalCards = ['web-1', 'web-2', 'web-3', 'ui-1', 'app-1', 'app-2', 'app-3', 'ui-2'];
 
 const cardObjects = [];
 
-function cardObject(dataItem, src, aDiv, aH3) {
+function cardObject(dataItem, src, aDiv, aH3, dataModalCard) {
     this.dataItem = dataItem;
     this.src = src;
     this.aDiv = aDiv;
     this.aH3 = aH3;
+    this.dataModalCard = dataModalCard;
 }
 
 for (let i = 0; i < dataItems.length; i++) {
@@ -56,17 +58,20 @@ for (let i = 0; i < dataItems.length; i++) {
     const src = srcs[i];
     const aDiv = aDivs[i];
     const aH3 = aH3s[i];
-    const newCard = new cardObject(dataItem, src, aDiv, aH3);
+    const dataModalCard = dataModalCards[i];
+    const newCard = new cardObject(dataItem, src, aDiv, aH3, dataModalCard);
     cardObjects.push(newCard);
 }
 
 const portfolioGrid = document.querySelector('.portfolio-grid');
 
-for (const { dataItem, src, aDiv, aH3 }
+for (const { dataItem, src, aDiv, aH3, dataModalCard }
     of cardObjects) {
     const div1 = document.createElement("div");
     div1.setAttribute("class", "portfolio-card");
     div1.setAttribute("data-item", dataItem);
+    div1.setAttribute("data-open", "modal-card");
+    div1.setAttribute("data-modalCard", dataModalCard);
 
     const div2 = document.createElement("div");
     div2.setAttribute("class", "card-body");
@@ -92,3 +97,5 @@ for (const { dataItem, src, aDiv, aH3 }
     div1.appendChild(div2);
     portfolioGrid.appendChild(div1);
 }
+
+exports = { srcs, dataModalCards };

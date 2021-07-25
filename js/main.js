@@ -109,11 +109,12 @@ for (const link of filterLink) {
 for (const elm of openModal) {
     elm.addEventListener('click', function() {
         const modalId = this.dataset.open;
-        document.getElementById(modalId).classList.add(isVisible);
         if (modalId === 'modal-card') {
             const modalCard = this.dataset.modalcard;
+            buildModal();
             modalTemplate(modalCardObjects[modalCard]);
         }
+        document.getElementById(modalId).classList.add(isVisible);
     });
 }
 
@@ -139,3 +140,16 @@ document.addEventListener('keyup', (e) => {
         document.querySelector(".modal.is-visible").classList.remove('is-visible');
     }
 });
+
+const elmsDisplayed = getComputedStyle(root).getPropertyValue('--marquee-elms-displayed');
+const marqueeContent = document.querySelector('ul.marquee-content');
+
+root.style.setProperty('--marquee-elms', marqueeContent.children.length);
+
+for (let i = 0; i < elmsDisplayed; i++) {
+    marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+    console.log(i);
+}
+
+const para = document.querySelector("p");
+// console.log(getComputedStyle(para));
